@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b12">
+<title>Infinite Image Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0b12;--panel:#14141f;--panel2:#1b1b29;--line:#29293a;--muted:#9898ad;--text:#f5f4ff;--a:#a78bfa;--b:#6ee7f9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#28204a 0,transparent 48%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+header{height:76px;border-bottom:1px solid #ffffff12;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,70px);backdrop-filter:blur(16px);position:sticky;top:0;background:#0b0b12d9;z-index:5}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:-.4px}.logo{width:35px;height:35px;border-radius:12px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#10101a;font-size:19px;box-shadow:0 0 28px #a78bfa55}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:#c8c5dc;font-size:12px}
+main{width:min(1160px,92vw);margin:55px auto 80px}.hero{text-align:center;margin-bottom:36px}.eyebrow{color:#c4b5fd;text-transform:uppercase;letter-spacing:2.4px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-2.7px;margin:13px 0 14px}.gradient{background:linear-gradient(100deg,#c4b5fd,#7dd3fc);background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:600px;margin:auto;font-size:16px}
+.workspace{display:grid;grid-template-columns:350px 1fr;gap:20px;align-items:start}.panel{background:linear-gradient(160deg,#191927,#11111a);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 20px 60px #0003}.panel h2{font-size:15px;margin:0 0 17px}.field{margin-bottom:17px}.field label{display:block;font-size:12px;color:#c4c2d4;margin-bottom:8px;font-weight:650}.field textarea{width:100%;min-height:148px;resize:vertical;background:#0c0c14;border:1px solid #333347;border-radius:12px;color:var(--text);padding:13px;font:inherit;outline:none}.field textarea:focus,select:focus{border-color:#9b8af1;box-shadow:0 0 0 3px #a78bfa1c}.hint{font-size:11px;color:#85859a;margin-top:6px}
+select{width:100%;background:#0c0c14;color:var(--text);border:1px solid #333347;border-radius:10px;padding:11px;font:inherit;outline:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.generate{width:100%;border:0;border-radius:12px;padding:14px 16px;background:linear-gradient(100deg,#a78bfa,#67d9ef);color:#10101a;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 25px #8b7af533;transition:transform .15s,filter .15s}.generate:hover{filter:brightness(1.08);transform:translateY(-1px)}.generate:disabled{opacity:.55;cursor:wait;transform:none}.notice{color:#88889c;font-size:11px;margin:12px 1px 0;line-height:1.5}
+.output-head{display:flex;justify-content:space-between;align-items:center;margin:2px 0 15px}.output-head h2{font-size:15px;margin:0}.count{color:var(--muted);font-size:12px}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.empty{grid-column:1/-1;border:1px dashed #3a394e;border-radius:18px;min-height:360px;display:grid;place-items:center;text-align:center;padding:30px;color:#85859b;background:#ffffff03}.empty .spark{font-size:35px;margin-bottom:8px}.empty strong{display:block;color:#c9c6dc;font-size:14px;margin-bottom:5px}.image-card{overflow:hidden;background:#151521;border:1px solid var(--line);border-radius:15px;position:relative}.image-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#20202d}.image-actions{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:11px;color:#aaa8bd}.image-actions a{color:#c4b5fd;text-decoration:none;font-weight:700}.image-actions a:hover{text-decoration:underline}
+.status{display:none;margin-top:13px;border-radius:10px;padding:10px 12px;font-size:12px}.status.show{display:block}.status.error{background:#4a2028;color:#ffc1c9}.status.info{background:#24213c;color:#d7d0ff}.spinner{display:inline-block;width:13px;height:13px;border:2px solid #17172955;border-top-color:#171729;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:7px}@keyframes spin{to{transform:rotate(360deg)}}
+footer{text-align:center;color:#66667a;font-size:11px;margin-top:32px}footer a{color:#aaa0e8}
+@media(max-width:800px){main{margin-top:35px}.workspace{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.hero h1{letter-spacing:-1.5px}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}.panel{padding:17px}.empty{min-height:230px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">✦</div> Infinite Image Studio</div><div class="pill">AI image creator</div></header>
+<main>
+  <section class="hero"><div class="eyebrow">Your imagination, rendered</div><h1>Dream it. <span class="gradient">Generate it.</span></h1><p>Turn a description into an image. Keep creating, explore new ideas, and build your own image gallery.</p></section>
+  <section class="workspace">
+    <div class="panel">
+      <h2>✦ Create an image</h2>
+      <div class="field"><label for="prompt">Describe what you want to see</label><textarea id="prompt" maxlength="4000" placeholder="A cozy retro diner in the 1970s, warm amber lighting, vintage sign lettering, cinematic photography..."></textarea><div class="hint">Be as descriptive as you like.</div></div>
+      <div class="two">
+        <div class="field"><label for="size">Aspect ratio</label><select id="size"><option value="1024x1024">Square</option><option value="1536x1024">Landscape</option><option value="1024x1536">Portrait</option></select></div>
+        <div class="field"><label for="quality">Quality</label><select id="quality"><option value="medium">Standard</option><option value="low">Fast</option><option value="high">High detail</option></select></div>
+      </div>
+      <div class="field"><label for="count">Images per batch</label><select id="count"><option value="1">1 image</option><option value="2">2 images</option><option value="3">3 images</option><option value="4">4 images</option></select></div>
+      <button class="generate" id="generate">✦ Generate image</button>
+      <div class="status" id="status" role="status"></div>
+      <p class="notice">Generation uses the OpenAI API. There is no fixed gallery limit in this app, but each generation is subject to your API account's usage limits and costs.</p>
+    </div>
+    <div>
+      <div class="output-head"><h2>Your creations</h2><span class="count" id="counter">0 images</span></div>
+      <div class="gallery" id="gallery"><div class="empty"><div><div class="spark">✧</div><strong>Your gallery is waiting</strong>Describe an image and press Generate to begin.</div></div></div>
+    </div>
+  </section>
+  <footer>Powered by the OpenAI image generation API · Images stay in this browser session · <a href="https://platform.openai.com/docs/guides/image-generation" target="_blank" rel="noreferrer">API guide</a></footer>
+</main>
+<script>
+const promptEl=document.querySelector("#prompt"),button=document.querySelector("#generate"),gallery=document.querySelector("#gallery"),statusEl=document.querySelector("#status"),counter=document.querySelector("#counter");
+let total=0;
+function showStatus(message,type="info"){statusEl.textContent=message;statusEl.className=`status show ${type}`;}
+function addImage(src,index){const card=document.createElement("article");card.className="image-card";const img=document.createElement("img");img.src=src;img.alt="AI-generated image";const actions=document.createElement("div");actions.className="image-actions";const label=document.createElement("span");label.textContent=`Creation ${total-index}`;const link=document.createElement("a");link.href=src;link.download=`infinite-image-${Date.now()}-${index+1}.png`;link.textContent="↓ Download";actions.append(label,link);card.append(img,actions);gallery.prepend(card);}
+button.addEventListener("click",async()=>{
+ const prompt=promptEl.value.trim();if(!prompt){showStatus("Write a description before generating.","error");promptEl.focus();return;}
+ button.disabled=true;button.innerHTML='<span class="spinner"></span>Creating your image...';showStatus("Sending your prompt to the image model. This can take a little while.");
+ try{
+  const response=await fetch("/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,size:document.querySelector("#size").value,quality:document.querySelector("#quality").value,count:Number(document.querySelector("#count").value)})});
+  const data=await response.json();if(!response.ok)throw new Error(data.error||"Something went wrong.");
+  if(gallery.querySelector(".empty"))gallery.innerHTML="";
+  data.images.forEach((src,i)=>addImage(src,i));total+=data.images.length;counter.textContent=`${total} image${total===1?"":"s"}`;showStatus(`Done! ${data.images.length} image${data.images.length===1?" was":"s were"} added to your gallery.`);
+ }catch(error){showStatus(error.message,"error");}
+ finally{button.disabled=false;button.textContent="✦ Generate image";}
+});
+</script>
+</body>
+</html>
